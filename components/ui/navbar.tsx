@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "./button";
-import { nav } from "framer-motion/client";
+import { useState } from "react";
 
 const navLinks = [
   { name: "Home", href: "#home", isAnchor: true },
@@ -44,6 +44,8 @@ const smoothScroll = (targetId: string) => {
 };
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className="w-full py-4 px-8 flex justify-between items-center bg-white shadow-sm sticky top-0 z-50">
       {/* Logo Section */}
@@ -57,7 +59,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Navigation Links */}
+      {/* Navigation Links - Desktop */}
       <div className="hidden md:flex gap-8 items-center">
         {navLinks.map((link) =>
           link.isAnchor ? (
@@ -83,6 +85,63 @@ export default function Navbar() {
           Call Now
         </Button>
       </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="md:hidden flex flex-col gap-1.5"
+      >
+        <span
+          className={`block w-6 h-0.5 bg-stone-600 transition-all ${
+            isOpen ? "rotate-45 translate-y-2" : ""
+          }`}
+        ></span>
+        <span
+          className={`block w-6 h-0.5 bg-stone-600 transition-all ${
+            isOpen ? "opacity-0" : ""
+          }`}
+        ></span>
+        <span
+          className={`block w-6 h-0.5 bg-stone-600 transition-all ${
+            isOpen ? "-rotate-45 -translate-y-2" : ""
+          }`}
+        ></span>
+      </button>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="absolute top-full left-0 w-full bg-white shadow-md md:hidden">
+          <div className="flex flex-col py-4 px-8 gap-4">
+            {navLinks.map((link) =>
+              link.isAnchor ? (
+                <button
+                  key={link.name}
+                  onClick={() => {
+                    smoothScroll(link.href);
+                    setIsOpen(false);
+                  }}
+                  className="text-stone-600 hover:text-teal-600 transition-colors cursor-pointer bg-none border-none p-0 text-left"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-stone-600 hover:text-teal-600 transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
+
+            <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-full w-full">
+              Call Now
+            </Button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

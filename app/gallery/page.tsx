@@ -66,7 +66,7 @@ export default function Gallery() {
       <Navbar />
 
       {/* Gallery Header */}
-      <section className="w-full max-w-6xl mx-auto px-4 mt-12 mb-16">
+      <section className="w-full max-w-6xl mx-auto px-4 mt-8 md:mt-12 mb-8 md:mb-16">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,12 +74,12 @@ export default function Gallery() {
           className="text-center"
         >
           <h1
-            className="text-5xl md:text-6xl font-bold text-teal-800 mb-4"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold text-teal-800 mb-4"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Our Food Gallery
           </h1>
-          <p className="text-stone-600 text-lg max-w-2xl mx-auto">
+          <p className="text-stone-600 text-base md:text-lg max-w-2xl mx-auto px-2">
             Feast your eyes on the fresh, delicious food we prepare daily at La
             Cima Mariscos.
           </p>
@@ -87,8 +87,8 @@ export default function Gallery() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="w-full max-w-6xl mx-auto px-4 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="w-full max-w-6xl mx-auto px-2 md:px-4 pb-8 md:pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {foodImages.map((image, index) => (
             <motion.div
               key={image.alt}
@@ -99,7 +99,7 @@ export default function Gallery() {
               className="flex flex-col"
             >
               <div
-                className="group relative overflow-hidden rounded-2xl shadow-lg border border-stone-100 h-80 w-full cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl shadow-lg border border-stone-100 h-48 md:h-64 lg:h-80 w-full cursor-pointer"
                 onClick={() => setSelectedImage(image.src)}
               >
                 <img
@@ -122,7 +122,7 @@ export default function Gallery() {
               </div>
 
               {/* Text below image */}
-              <p className="text-center text-stone-700 font-medium mt-4 text-lg">
+              <p className="text-center text-stone-700 font-medium mt-2 md:mt-4 text-sm md:text-lg">
                 {image.title}
               </p>
             </motion.div>
@@ -145,13 +145,13 @@ export default function Gallery() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="w-full h-full max-w-2xl max-h-2xl"
+            className="w-full h-auto max-w-sm md:max-w-2xl max-h-[70vh] md:max-h-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={selectedImage}
               alt="Enlarged food"
-              className="w-full h-full object-cover rounded-3xl shadow-2xl"
+              className="w-full h-auto max-h-[70vh] object-contain rounded-3xl shadow-2xl"
             />
           </motion.div>
         </motion.div>

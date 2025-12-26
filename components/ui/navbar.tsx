@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "./button";
 import { useState } from "react";
+import { BUSINESS_PHONE_LINK } from "@/lib/constants";
 
 const navLinks = [
   { name: "Home", href: "#home", isAnchor: true },
@@ -82,7 +83,7 @@ export default function Navbar() {
         )}
 
         <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-full">
-          Call Now
+          <a href={BUSINESS_PHONE_LINK}>Call Now</a>
         </Button>
       </div>
 
@@ -137,7 +138,7 @@ export default function Navbar() {
             )}
 
             <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-full w-full">
-              Call Now
+              <a href={BUSINESS_PHONE_LINK}>Call Now</a>
             </Button>
           </div>
         </div>

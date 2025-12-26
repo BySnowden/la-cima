@@ -5,6 +5,7 @@ import { Button } from "./button";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faCompass } from "@fortawesome/free-solid-svg-icons";
+import { BUSINESS_PHONE_LINK } from "@/lib/constants";
 
 export default function Location() {
   return (
@@ -119,12 +120,17 @@ export default function Location() {
 
             {/* Call Button */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg py-6 rounded-xl shadow-md mt-auto">
-                <FontAwesomeIcon
-                  icon={faPhone}
-                  className="w-5 h-5 text-white mr-2"
-                />
-                Call to Order
+              <Button
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg py-6 rounded-xl shadow-md mt-auto"
+                asChild
+              >
+                <Link href={BUSINESS_PHONE_LINK}>
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    className="w-5 h-5 text-white mr-2"
+                  />
+                  Call to Order
+                </Link>
               </Button>
             </motion.div>
           </motion.div>

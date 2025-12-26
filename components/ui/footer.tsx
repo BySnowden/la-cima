@@ -9,6 +9,7 @@ import {
   faTiktok,
   faYelp,
 } from "@fortawesome/free-brands-svg-icons";
+import { BUSINESS_PHONE, BUSINESS_PHONE_LINK } from "@/lib/constants";
 
 export default function Footer() {
   const socialLinks = [
@@ -51,10 +52,10 @@ export default function Footer() {
           <p className="text-lg text-teal-100">
             Questions? Call us at{" "}
             <a
-              href="tel:(210)837-4453"
+              href={BUSINESS_PHONE_LINK}
               className="font-bold hover:text-orange-300 transition-colors"
             >
-              (210) 837-4453
+              {BUSINESS_PHONE}
             </a>
           </p>
         </div>

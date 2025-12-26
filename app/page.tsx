@@ -7,6 +7,7 @@ import Navbar from "@/components/ui/navbar";
 import Location from "@/components/ui/location";
 import Footer from "@/components/ui/footer";
 import { useEffect } from "react";
+import { BUSINESS_PHONE_LINK } from "@/lib/constants";
 
 // Smooth scroll function
 const smoothScrollToElement = (targetId: string) => {
@@ -71,8 +72,9 @@ function Hero() {
             <Button
               size="lg"
               className="bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg px-8 py-6 rounded-full shadow-lg"
+              asChild
             >
-              Call to Order
+              <a href={BUSINESS_PHONE_LINK}>Call to Order</a>
             </Button>
           </motion.div>
         </div>
